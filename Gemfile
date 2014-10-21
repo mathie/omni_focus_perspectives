@@ -14,12 +14,20 @@ gem 'jbuilder', '~> 2.0'
 
 group :development do
   gem 'pry-rails'
-  gem 'awesome_print'
+  gem 'awesome_print', require: false
+  gem 'meta_request'
 end
 
 group :development, :test do
   gem 'byebug'
   gem 'web-console', '~> 2.0.0.beta4'
   gem 'spring'
+  gem 'spring-commands-rspec'
+  
+  gem 'rspec-rails'
+  
+  gem 'guard-bundler', require: false
+  gem 'guard-rspec', require: false
+  gem 'ruby_gntp'
 end
 
