@@ -17,7 +17,7 @@ guard :rspec, cmd: 'bin/rspec' do
     [
       "spec/routing/#{m[1]}_routing_spec.rb",
       "spec/controllers/#{m[1]}_controller_spec.rb",
-      "spec/acceptance/#{m[1]}_spec.rb"
+      "spec/features/#{m[1]}_spec.rb"
     ]
   }
 
