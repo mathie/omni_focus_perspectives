@@ -1,6 +1,9 @@
 source 'https://rubygems.org'
 
+ruby File.read(File.expand_path('../.ruby-version', __FILE__)).chomp
+
 gem 'rails', '4.2.0.beta2'
+gem 'rails_12factor'
 gem 'pg'
 
 # Asset Pipeline
