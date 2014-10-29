@@ -1,0 +1,57 @@
+<% content_for :title, 'Create a new perspective' %>
+
+<% if @perspective.invalid? %>
+  <div class="alert alert-danger alert-dismissible" role="alert">
+    <button type="button" class="close" data-dismiss="alert">
+      <span aria-hidden="true">&times;</span>
+      <span class="sr-only">Close</span>
+    </button>
+
+    <p>
+      Your new perspective couldn't be saved because of the following issues:
+    </p>
+
+    <ul>
+      <% @perspective.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
+<%= form_for(@perspective, html: { class: 'form-horizontal', role: 'form' }) do |f| %>
+  <%= omni_text_field f, :title, placeholder: 'Today' do %>
+    Give your perspective a snappy title that succinctly describes what it's
+    intended to do. This could be, but doesn't have to be, the title you've
+    given the perspective in OmniFocus.
+  <% end %>
+  
+  <%= omni_text_area f, :description, rows: 6 do %>
+    Describe your perspective. Be sure to give some detail on what you use the perspective for &ndash; is it primarily for
+    planning, doing, reviewing, or something else entirely? How do you set up your projects and actions so the right information
+    appears in this view?
+  <% end %>
+
+  <%= omni_check_box f, :sidebar, 'Shown in my sidebar' do %>
+    Do you show this view in your sidebar, or is it just for occasional use?
+  <% end %>
+
+  <div class="form-group">
+    <div class="col-sm-offset-2 col-sm-10">
+      <div class="checkbox">
+        <%= f.label :sidebar, "#{f.check_box :sidebar} Shown in my sidebar".html_safe %>
+      </div>
+
+      <p class="help-block">
+        Do you show this view in your sidebar, or is it just for occasional use?
+      </p>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <div class="col-sm-offset-2 col-sm-10">
+      <%= f.submit class: 'btn btn-primary' %>
+      <%= link_to "Cancel", perspectives_path, class: 'btn btn-default' %>
+    </div>
+  </div>  
+<% end %>
