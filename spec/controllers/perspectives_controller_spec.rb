@@ -22,7 +22,7 @@ RSpec.describe PerspectivesController do
   end
   
   describe 'POST :create' do
-    let(:perspective_double) { instance_double Perspective, save: true }
+    let(:perspective_double) { instance_spy Perspective, save: true }
     let(:perspective_params) { { title: 'Today', description: 'My today perspective', sidebar: '0' } }
     let(:params)             { { perspective: perspective_params } }
 
@@ -35,15 +35,15 @@ RSpec.describe PerspectivesController do
     end
 
     it 'builds a new perspective with the supplied parameters' do
-      expect(Perspective).to receive(:new).with(perspective_params)
-
       do_post
+
+      expect(Perspective).to have_received(:new).with(perspective_params)
     end
     
     it 'attempts to save the new perspective' do
-      expect(perspective_double).to receive(:save)
-
       do_post
+
+      expect(perspective_double).to have_received(:save)
     end
     
     describe 'which is saved successfully' do
