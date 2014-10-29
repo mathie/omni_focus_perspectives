@@ -1,40 +1,40 @@
 <% content_for :title, 'Create a new perspective' %>
 
+<% if @perspective.invalid? %>
+  <div class="alert alert-danger alert-dismissible" role="alert">
+    <button type="button" class="close" data-dismiss="alert">
+      <span aria-hidden="true">&times;</span>
+      <span class="sr-only">Close</span>
+    </button>
+
+    <p>
+      Your new perspective couldn't be saved because of the following issues:
+    </p>
+
+    <ul>
+      <% @perspective.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
 <%= form_for(@perspective, html: { class: 'form-horizontal', role: 'form' }) do |f| %>
-  <div class="form-group form-group-lg">
-    <%= f.label :title, class: 'col-sm-2 control-label' %>
+  <%= omni_text_field f, :title, placeholder: 'Today' do %>
+    Give your perspective a snappy title that succinctly describes what it's
+    intended to do. This could be, but doesn't have to be, the title you've
+    given the perspective in OmniFocus.
+  <% end %>
+  
+  <%= omni_text_area f, :description, rows: 6 do %>
+    Describe your perspective. Be sure to give some detail on what you use the perspective for &ndash; is it primarily for
+    planning, doing, reviewing, or something else entirely? How do you set up your projects and actions so the right information
+    appears in this view?
+  <% end %>
 
-    <div class="col-sm-10">
-      <%= f.text_field :title, class: 'form-control', placeholder: 'Today' %>
-
-      <p class="help-block">
-        Give your perspective a snappy title that succinctly describes what it's
-        intended to do. This could be, but doesn't have to be, the title you've
-        given the perspective in OmniFocus.
-      </p>
-    </div>
-    
-  </div>
-
-  <div class="form-group">
-    <%= f.label :description, class: 'col-sm-2 control-label' %>
-    
-    <div class="col-sm-10">
-      <%= f.text_area :description, class: 'form-control', rows: 6 %>
-      
-      <p class="help-block">
-        Describe your perspective. Be sure to give some detail on what you use the
-        perspective for &ndash; is it primarily for planning, doing, reviewing, or
-        something else entirely? How do you set up your projects and actions so the
-        right information appears in this view?
-      </p>
-      
-      <p class="help-block">
-        You can use some <a href="http://example.com/markdown">Markdown</a> in here
-        to format your description.
-      </p>
-    </div>
-  </div>
+  <%= omni_check_box f, :sidebar, 'Shown in my sidebar' do %>
+    Do you show this view in your sidebar, or is it just for occasional use?
+  <% end %>
 
   <div class="form-group">
     <div class="col-sm-offset-2 col-sm-10">
