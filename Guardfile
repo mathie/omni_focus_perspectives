@@ -25,3 +25,8 @@ guard :rspec, cmd: 'bin/rspec' do
   watch('app/controllers/application_controller.rb')  { "spec/controllers" }
 end
 
+guard :yard do
+  watch(%r{^(app|lib)/.+\.rb$})
+  watch('README.md')
+  watch('.yardopts')
+end

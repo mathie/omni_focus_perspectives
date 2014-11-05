@@ -88,6 +88,9 @@ GEM
     guard-rspec (4.3.1)
       guard (~> 2.1)
       rspec (>= 2.14, < 4.0)
+    guard-yard (2.1.3)
+      guard (>= 1.1.0)
+      yard (>= 0.7.0)
     hike (1.2.3)
     hitimes (1.2.2)
     i18n (0.7.0.beta1)
@@ -223,6 +226,7 @@ GEM
       sprockets-rails (>= 2.0, < 4.0)
     xpath (2.0.0)
       nokogiri (~> 1.3)
+    yard (0.8.7.6)
 
 PLATFORMS
   ruby
@@ -236,6 +240,7 @@ DEPENDENCIES
   coffee-rails (~> 4.0.0)
   guard-bundler
   guard-rspec
+  guard-yard
   jbuilder (~> 2.0)
   jquery-rails (~> 4.0.0.beta2)
   meta_request
@@ -251,3 +256,4 @@ DEPENDENCIES
   turbolinks
   uglifier (>= 1.3.0)
   web-console (~> 2.0.0.beta4)
+  yard

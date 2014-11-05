@@ -7,6 +7,10 @@
 # Ignore bundler config.
 /.bundle
 
-# Ignore all logfiles and tempfiles.
+# Ignore the YARD cache
+/.yardoc
+
+# Ignore all generated documentation, logfiles and tempfiles.
+/doc
 /log/*.log
 /tmp
