@@ -1,1 +1,1 @@
-web: bin/rails server --port=${PORT}
+web: bundle exec unicorn --port=${PORT} --config-file config/unicorn.rb
