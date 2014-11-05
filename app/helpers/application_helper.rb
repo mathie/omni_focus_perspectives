@@ -45,6 +45,21 @@ module ApplicationHelper
     end
   end
 
+  # <div class="form-group">
+  #   <div class="col-sm-offset-2 col-sm-10">
+  #     <%= f.submit class: 'btn btn-primary' %>
+  #     <%= link_to "Cancel", perspectives_path, class: 'btn btn-default' %>
+  #   </div>
+  # </div>
+  def omni_submit_and_cancel(form, cancel_path)
+    form_group do
+      content_tag(:div, class: 'col-sm-offset-2 col-sm-10') do
+        form.submit(class: 'btn btn-primary') + " " +
+          link_to('Cancel', cancel_path, class: 'btn btn-default')
+      end
+    end
+  end
+
   def omni_field(form, field, field_type, input_options = {}, &block)
     form_group do
       label = form.label(field, class: 'col-sm-2 control-label')

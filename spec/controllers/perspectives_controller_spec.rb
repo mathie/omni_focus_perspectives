@@ -2,22 +2,38 @@ require 'rails_helper'
 
 RSpec.describe PerspectivesController do
   describe 'GET :new' do
-    it 'responds with success' do
+    let(:perspective) { double('Perspective') }
+    
+    before(:each) do
+      allow(Perspective).to receive(:new) { perspective }
+    end
+
+    def do_get
       get :new
+    end
+    
+    it 'responds with success' do
+      do_get
       
       expect(response).to have_http_status(:success)
     end
     
     it 'renders the new template' do
-      get :new
+      do_get
       
       expect(response).to render_template(:new)
     end
     
-    it 'assigns @perspective to the view' do
-      get :new
+    it 'builds a new perspective' do
+      do_get
       
-      expect(assigns(:perspective)).to be_a_new(Perspective)
+      expect(Perspective).to have_received(:new)
+    end
+    
+    it 'assigns @perspective to the view' do
+      do_get
+      
+      expect(assigns(:perspective)).to eq(perspective)
     end
   end
   
@@ -82,6 +98,42 @@ RSpec.describe PerspectivesController do
         
         expect(assigns(:perspective)).to eq(perspective_double)
       end
+    end
+  end
+
+  describe 'GET :edit' do
+    let(:perspective) { double('Perspective') }
+
+    before(:each) do
+      allow(Perspective).to receive(:find) { perspective }
+    end
+
+    def do_get
+      get :edit, id: 'today'
+    end
+
+    it 'responds with success' do
+      do_get 
+      
+      expect(response).to have_http_status(:success)
+    end
+    
+    it 'renders the edit template' do
+      do_get
+      
+      expect(response).to render_template(:edit)
+    end
+    
+    it 'finds the perspective' do
+      do_get
+      
+      expect(Perspective).to have_received(:find).with('today')
+    end
+    
+    it 'assigns @perspective to the view' do
+      do_get
+      
+      expect(assigns(:perspective)).to eq(perspective)
     end
   end
 end

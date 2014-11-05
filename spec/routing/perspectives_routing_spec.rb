@@ -16,4 +16,18 @@ RSpec.describe PerspectivesController, 'routing' do
   it 'generates /perspectives from perspectives_path' do
     expect(perspectives_path).to eq('/perspectives')
   end
+  
+  it 'routes GET /perspectives/today/edit to perspectives#edit with id "today"' do
+    expect(get: '/perspectives/today/edit').to route_to(
+      controller: 'perspectives',
+      action: 'edit',
+      id: 'today'
+    )
+  end
+
+  it 'generates /perspectives/today/edit from edit_perspective_path' do
+    perspective = double('Perspective', to_param: 'today')
+    
+    expect(edit_perspective_path(perspective)).to eq('/perspectives/today/edit')
+  end
 end

@@ -13,7 +13,10 @@ class PerspectivesController < ApplicationController
       render action: 'new'
     end
   end
-  
+
+  def edit
+  end  
+
   private
   def perspective_params
     params.require(:perspective).permit(:title, :description, :sidebar)
