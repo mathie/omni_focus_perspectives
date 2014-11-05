@@ -1,22 +1,22 @@
 <%= render 'shared/errors', model: perspective %>
 
 <%= form_for(perspective, html: { class: 'form-horizontal', role: 'form' }) do |f| %>
-  <%= omni_text_field f, :title, placeholder: 'Today' do %>
+  <%= f.text_field :title, placeholder: 'Today' do %>
     Give your perspective a snappy title that succinctly describes what it's
     intended to do. This could be, but doesn't have to be, the title you've
     given the perspective in OmniFocus.
   <% end %>
   
-  <%= omni_text_area f, :description, rows: 6 do %>
+  <%= f.text_area :description, rows: 6 do %>
     Describe your perspective. Be sure to give some detail on what you use the
     perspective for &ndash; is it primarily for planning, doing, reviewing, or
     something else entirely? How do you set up your projects and actions so the
     right information appears in this view?
   <% end %>
 
-  <%= omni_check_box f, :sidebar, 'Shown in my sidebar' do %>
+  <%= f.check_box :sidebar do %>
     Do you show this view in your sidebar, or is it just for occasional use?
   <% end %>
 
-  <%= omni_submit_and_cancel f, perspectives_path %>
+  <%= f.submit %>
 <% end %>

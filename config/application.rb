@@ -32,3 +32,6 @@ module OmniFocusPerspectives
     config.active_record.raise_in_transactional_callbacks = true
   end
 end
+
+require 'omni_form_builder'
+ActionView::Base.default_form_builder = OmniFormBuilder
