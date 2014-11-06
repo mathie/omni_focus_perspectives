@@ -4,7 +4,10 @@ class PerspectivesController < ApplicationController
   def index
     @perspectives = Perspective.all
   end
-  
+
+  def show
+  end
+
   def new
     @perspective = Perspective.new
   end
@@ -21,6 +24,19 @@ class PerspectivesController < ApplicationController
   def edit
   end  
 
+  def update
+    if @perspective.update_attributes(perspective_params)
+      redirect_to perspectives_path, notice: 'Perspective successfully updated.'
+    else
+      render action: 'edit'
+    end
+  end
+  
+  def destroy
+    @perspective.destroy
+    redirect_to perspectives_path, notice: 'Perspective successfully deleted.'
+  end
+  
   private
   def perspective_params
     params.require(:perspective).permit(:title, :description, :sidebar)
