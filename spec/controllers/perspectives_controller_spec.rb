@@ -1,6 +1,42 @@
 require 'rails_helper'
 
 RSpec.describe PerspectivesController do
+  describe 'GET :index' do
+    let(:perspectives) { [ double('Perspective') ] }
+    
+    before(:each) do
+      allow(Perspective).to receive(:all) { perspectives }
+    end
+    
+    def do_get
+      get :index
+    end
+    
+    it 'responds with success' do
+      do_get
+      
+      expect(response).to have_http_status(:success)
+    end
+    
+    it 'renders the index template' do
+      do_get
+      
+      expect(response).to render_template(:index)
+    end
+    
+    it 'retrieves a list of perspectives to display' do
+      do_get
+      
+      expect(Perspective).to have_received(:all)
+    end
+    
+    it 'assigns @perspectives to the view' do
+      do_get
+      
+      expect(assigns(:perspectives)).to eq(perspectives)
+    end
+  end
+  
   describe 'GET :new' do
     let(:perspective) { double('Perspective') }
     

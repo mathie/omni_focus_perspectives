@@ -1,0 +1,6 @@
+<% content_for :title, 'All Perspectives' %>
+<% content_for :toolbar do %>
+  <%= link_to 'New Perspective', new_perspective_path, class: 'btn btn-default' %>
+<% end %>
+
+<%= render @perspectives %>

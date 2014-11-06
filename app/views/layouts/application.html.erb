@@ -27,7 +27,16 @@
 
         <div class="collapse navbar-collapse" id="primary-navbar-collapse">
           <ul class="nav navbar-nav">
-            <li class="active"><%= link_to 'Home', root_path %></li>
+            <% if request.path == root_path %>
+              <li class="active"><%= link_to 'Home', root_path %></li>
+            <% else %>
+              <li><%= link_to 'Home', root_path %></li>
+            <% end %>
+            <% if request.path == perspectives_path %>
+              <li class="active"><%= link_to 'All Perspectives', perspectives_path %></li>
+            <% else %>
+              <li><%= link_to 'All Perspectives', perspectives_path %></li>
+            <% end %>
           </ul>
         </div>
       </div>
@@ -37,6 +46,12 @@
 
       <% if content_for?(:title) %>
         <hgroup class="page-header">
+          <% if content_for?(:toolbar) %>
+            <div class="pull-right">
+              <%= yield :toolbar %>
+            </div>
+          <% end %>
+
           <h1><%= yield :title %></h1>
         </hgroup>
       <% end %>

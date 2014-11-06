@@ -1,4 +1,4 @@
 Rails.application.routes.draw do
-  resources :perspectives, only: [ :new, :create, :edit ]
+  resources :perspectives
   root to: 'pages#index'
 end

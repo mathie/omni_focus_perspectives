@@ -1,6 +1,10 @@
 class PerspectivesController < ApplicationController
   before_filter :find_perspective
 
+  def index
+    @perspectives = Perspective.all
+  end
+  
   def new
     @perspective = Perspective.new
   end
