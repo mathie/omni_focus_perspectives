@@ -1,5 +1,10 @@
 valid:
   title: Today
   description: |
-    This is my today perspective, where I spend most of the day doing the work I've
-    already planned for the day.
+    This is my today perspective, where I spend most of the day doing the work
+    I've already planned for the day.
+plan:
+  title: Plan
+  description: |
+    This is my primary planning perspective, where I can see a list of
+    available tasks that I might want to complete today.
