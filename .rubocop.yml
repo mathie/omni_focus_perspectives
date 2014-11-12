@@ -6,6 +6,7 @@ AllCops:
     - db/schema.rb
     - Guardfile
     - bin/**
+    - vendor/**
 
 Metrics/LineLength:
   Max: 120
