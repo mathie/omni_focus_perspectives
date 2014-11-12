@@ -22,7 +22,7 @@ group :development do
   gem 'pry-rails'
   gem 'awesome_print', require: false
   gem 'meta_request'
-  
+
   gem 'yard', require: false
 end
 
@@ -31,13 +31,15 @@ group :development, :test do
   gem 'web-console', '~> 2.0.0.beta4'
   gem 'spring'
   gem 'spring-commands-rspec'
-  
+
   gem 'rspec-rails'
   gem 'capybara'
-  
+
   gem 'guard-bundler', require: false
   gem 'guard-rspec', require: false
   gem 'guard-yard', require: false
   gem 'ruby_gntp'
+
+  gem 'codeclimate-test-reporter', require: false
 end
 
