@@ -9,6 +9,12 @@ class PerspectivesController < ApplicationController
   end
 
   def new
+    s3_bucket = AWS::S3.new.buckets["omni-focus-perspectives-#{Rails.env}"]
+    @s3_direct_post = s3_bucket.presigned_post(
+      key: "uploads/#{SecureRandom.uuid}/${filename}",
+      success_action_status: 201,
+      acl: :public_read
+    )
     @perspective = Perspective.new
   end
 

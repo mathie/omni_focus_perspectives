@@ -17,6 +17,8 @@ gem 'autoprefixer-rails'
 
 gem 'jbuilder', '~> 2.0'
 
+gem 'aws-sdk'
+
 group :development do
   gem 'pry-rails'
   gem 'awesome_print', require: false
