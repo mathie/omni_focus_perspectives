@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe PerspectivesController, 'routing' do
+RSpec.describe PerspectivesController do
   it 'routes GET /perspectives/new to perspectives#new' do
     expect(get: '/perspectives/new').to route_to('perspectives#new')
   end
@@ -12,11 +12,11 @@ RSpec.describe PerspectivesController, 'routing' do
   it 'routes POST /perspectives to perspectives#create' do
     expect(post: '/perspectives').to route_to('perspectives#create')
   end
-  
+
   it 'generates /perspectives from perspectives_path' do
     expect(perspectives_path).to eq('/perspectives')
   end
-  
+
   it 'routes GET /perspectives/today to perspectives#show with id "today"' do
     expect(get: '/perspectives/today').to route_to(
       controller: 'perspectives',
@@ -27,7 +27,7 @@ RSpec.describe PerspectivesController, 'routing' do
 
   it 'generates /perspectives/today from perspective_path(today)' do
     perspective = double('Perspective', to_param: 'today')
-    
+
     expect(perspective_path(perspective)).to eq('/perspectives/today')
   end
 
@@ -41,10 +41,10 @@ RSpec.describe PerspectivesController, 'routing' do
 
   it 'generates /perspectives/today/edit from edit_perspective_path' do
     perspective = double('Perspective', to_param: 'today')
-    
+
     expect(edit_perspective_path(perspective)).to eq('/perspectives/today/edit')
   end
-  
+
   it 'routes PUT /perspectives/today to perspectives#update with id "today"' do
     expect(put: '/perspectives/today').to route_to(
       controller: 'perspectives',
@@ -52,7 +52,7 @@ RSpec.describe PerspectivesController, 'routing' do
       id: 'today'
     )
   end
-  
+
   it 'routes PATCH /perspectives/today to perspectives#update with id "today"' do
     expect(patch: '/perspectives/today').to route_to(
       controller: 'perspectives',

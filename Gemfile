@@ -33,13 +33,14 @@ group :development, :test do
   gem 'spring-commands-rspec'
 
   gem 'rspec-rails'
+  gem 'rubocop-rspec'
   gem 'capybara'
 
   gem 'guard-bundler', require: false
   gem 'guard-rspec', require: false
   gem 'guard-yard', require: false
+  gem 'guard-rubocop', require: false
   gem 'ruby_gntp'
 
   gem 'codeclimate-test-reporter', require: false
 end
-

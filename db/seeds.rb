@@ -1,6 +1,6 @@
 Perspective.transaction do
   Perspective.delete_all
-  
+
   Perspective.create!(
     title: 'Today',
     description: <<-MARKDOWN

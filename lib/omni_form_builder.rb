@@ -1,3 +1,14 @@
+# A form builder which produces fields which conform to the markup that Twitter
+# Bootstrap expects. I'm implementing methods on an as-needed basis. So far, it
+# has support for text fields, text areas, and check boxes. The +omni_label+
+# method is named deliberately not to override the +label+ method provided by
+# the base class, since the check box (and others, I'm sure) don't need the
+# overridden "default" options.
+#
+# In addition, the overridden +submit+ button provides both a submit and a
+# cancel button -- with the cancel taking the user back to the plural path for a
+# new object, or the singular path for a persisted object. This seems like
+# sensible default behaviour.
 class OmniFormBuilder < ActionView::Helpers::FormBuilder
   [
     :text_field, :text_area
@@ -42,22 +53,23 @@ class OmniFormBuilder < ActionView::Helpers::FormBuilder
   end
 
   private
+
   def form_group
     @template.content_tag :div, class: 'form-group' do
       yield
     end
   end
-  
+
   def control_div(options = {}, &block)
-    classes = [ 'col-sm-10' ]
+    method = options.delete(:method)
+
+    classes = ['col-sm-10']
     classes << 'col-sm-offset-2' if options[:offset]
-    if method = options[:method]
-      classes << 'has-error' if object.errors[method].present?
-    end
+    classes << 'has-error' if method.present? && object.errors[method].present?
 
     @template.content_tag(:div, class: classes.join(' '), &block)
   end
-  
+
   def help_text(&block)
     if block_given?
       @template.content_tag(:p, class: 'help-block') do
