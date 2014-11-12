@@ -47,7 +47,7 @@ class OmniFormBuilder < ActionView::Helpers::FormBuilder
       yield
     end
   end
-  
+
   def control_div(options = {}, &block)
     classes = [ 'col-sm-10' ]
     classes << 'col-sm-offset-2' if options[:offset]
@@ -57,7 +57,7 @@ class OmniFormBuilder < ActionView::Helpers::FormBuilder
 
     @template.content_tag(:div, class: classes.join(' '), &block)
   end
-  
+
   def help_text(&block)
     if block_given?
       @template.content_tag(:p, class: 'help-block') do

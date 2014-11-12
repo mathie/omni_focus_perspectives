@@ -17,6 +17,6 @@ after_fork do |server, worker|
   Signal.trap 'TERM' do
     puts "Unicorn worker intercepting TERM signal and ignoring it. Waiting on master sending a QUIT signal instead."
   end
-  
+
   ActiveRecord::Base.establish_connection
 end
