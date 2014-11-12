@@ -12,5 +12,6 @@
 
 # Ignore all generated documentation, logfiles and tempfiles.
 /doc
+/coverage
 /log/*.log
 /tmp

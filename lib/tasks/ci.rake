@@ -1,0 +1,1 @@
+task :ci => [:default, 'assets:precompile', 'assets:clean']

@@ -1,0 +1,16 @@
+language: ruby
+rvm:
+  - 2.1.4
+script: RAILS_ENV=test bin/rake ci
+addons:
+  postgresql: '9.3'
+  code_climate:
+    repo_token: 556e3fb42d0d36c959e70aa895b4726e29b769b519d65d05e83ad2fc558a0baf
+cache:
+  bundler: true
+  apt: true
+bundler_args: "--without development:production:doc"
+before_script:
+  - mkdir -p tmp/cache
+  - cp config/database.travis.yml config/database.yml
+  - RAILS_ENV=test bin/rake db:reset
