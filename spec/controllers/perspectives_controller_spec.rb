@@ -210,7 +210,7 @@ RSpec.describe PerspectivesController do
   end
 
   describe 'PUT :update' do
-    let(:perspective) { instance_spy Perspective, update_attributes: true }
+    let(:perspective) { instance_spy 'Perspective', update_attributes: true }
     let(:perspective_params) { { title: 'Today', description: 'My today perspective', sidebar: '0' } }
     let(:params)             { { id: 'today', perspective: perspective_params } }
 
@@ -270,6 +270,37 @@ RSpec.describe PerspectivesController do
 
         expect(assigns(:perspective)).to eq(perspective)
       end
+    end
+  end
+
+  describe 'DELETE :destroy' do
+    let(:perspective) { instance_spy 'Perspective', destroy: true }
+    let(:params) { { id: 'today' } }
+
+    def do_delete(params = params)
+      delete :destroy, params
+    end
+
+    before(:each) do
+      allow(Perspective).to receive(:find).and_return(perspective)
+    end
+
+    it 'finds the appropriate perspective' do
+      do_delete
+
+      expect(Perspective).to have_received(:find).with('today')
+    end
+
+    it 'deletes the perspective' do
+      do_delete
+
+      expect(perspective).to have_received(:destroy)
+    end
+
+    it 'redirects to the perspective list' do
+      do_delete
+
+      expect(response).to redirect_to(perspectives_path)
     end
   end
 end

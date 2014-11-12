@@ -109,4 +109,23 @@ RSpec.feature 'Perspective management' do
       expect(page).to have_content('Description can\'t be blank')
     end
   end
+
+  feature 'deleting a perspective' do
+    fixtures :perspectives
+
+    scenario 'I can find the delete link for an individual perspective' do
+      visit perspective_path(perspectives(:plan))
+
+      click_link 'Delete'
+    end
+
+    scenario 'Deleting a perspective' do
+      visit perspective_path(perspectives(:plan))
+
+      click_link 'Delete'
+
+      expect(page).to have_content('Perspective successfully deleted.')
+      expect(page).not_to have_content('primary planning perspective')
+    end
+  end
 end
