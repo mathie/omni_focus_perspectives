@@ -1,3 +1,4 @@
+# CRUD actions to drive the web view for managing basic perspectives.
 class PerspectivesController < ApplicationController
   before_filter :find_perspective
 
@@ -28,7 +29,7 @@ class PerspectivesController < ApplicationController
   end
 
   def edit
-  end  
+  end
 
   def update
     if @perspective.update_attributes(perspective_params)
@@ -37,13 +38,14 @@ class PerspectivesController < ApplicationController
       render action: 'edit'
     end
   end
-  
+
   def destroy
     @perspective.destroy
     redirect_to perspectives_path, notice: 'Perspective successfully deleted.'
   end
-  
+
   private
+
   def perspective_params
     params.require(:perspective).permit(:title, :description, :sidebar)
   end
