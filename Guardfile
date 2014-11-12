@@ -25,6 +25,11 @@ guard :rspec, cmd: 'bin/rspec' do
   watch('app/controllers/application_controller.rb')  { "spec/controllers" }
 end
 
+guard :rubocop do
+  watch(%r{.+\.rb$})
+  watch(%r{(?:.+/)?\.rubocop\.yml$}) { |m| File.dirname(m[0]) }
+end
+
 guard :yard do
   watch(%r{^(app|lib)/.+\.rb$})
   watch('README.md')
