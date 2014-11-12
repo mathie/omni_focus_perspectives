@@ -5,8 +5,8 @@ AllCops:
   Exclude:
     - db/schema.rb
     - Guardfile
-    - bin/**
-    - vendor/**
+    - bin/**/*
+    - vendor/**/*
 
 Metrics/LineLength:
   Max: 120
