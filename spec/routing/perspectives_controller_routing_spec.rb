@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe PerspectivesController, 'routing' do
+RSpec.describe PerspectivesController do
   it 'routes GET /perspectives/new to perspectives#new' do
     expect(get: '/perspectives/new').to route_to('perspectives#new')
   end

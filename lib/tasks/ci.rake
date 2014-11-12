@@ -1,1 +1,1 @@
-task :ci => [:default, 'assets:precompile', 'assets:clean']
+task ci: [:default, :rubocop, 'assets:precompile', 'assets:clean']

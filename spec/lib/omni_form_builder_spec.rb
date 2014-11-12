@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe OmniFormBuilder do
   let(:model)    { double('model', errors: {}) }
   let(:template) { double('template') }
-  subject { OmniFormBuilder.new 'model', model, template, {} }
+  subject { described_class.new 'model', model, template, {} }
 
   before(:each) do
     allow(template).to receive(:content_tag) do |&block|
@@ -48,8 +48,8 @@ RSpec.describe OmniFormBuilder do
     it 'generates the correct surrounding div' do
       subject.text_field(:field)
 
-      expect(template).to have_received(:content_tag).
-        with(:div, class: 'form-group')
+      expect(template).to have_received(:content_tag)
+        .with(:div, class: 'form-group')
     end
 
     it 'generates the correct label' do
@@ -69,19 +69,19 @@ RSpec.describe OmniFormBuilder do
       it 'when there are no errors' do
         subject.text_field(:field)
 
-        expect(template).to have_received(:content_tag).
-          with(:div, class: 'col-sm-10')
+        expect(template).to have_received(:content_tag)
+          .with(:div, class: 'col-sm-10')
       end
 
       it 'when there is an error on the field' do
         allow(model).to receive(:errors) do
-          { field: [ 'error message' ] }
+          { field: ['error message'] }
         end
 
         subject.text_field(:field)
 
-        expect(template).to have_received(:content_tag).
-          with(:div, class: 'col-sm-10 has-error')
+        expect(template).to have_received(:content_tag)
+          .with(:div, class: 'col-sm-10 has-error')
       end
     end
 
@@ -110,8 +110,8 @@ RSpec.describe OmniFormBuilder do
     it 'generates the correct surrounding div' do
       subject.text_area(:field)
 
-      expect(template).to have_received(:content_tag).
-        with(:div, class: 'form-group')
+      expect(template).to have_received(:content_tag)
+        .with(:div, class: 'form-group')
     end
 
     it 'generates the correct label' do
@@ -131,19 +131,19 @@ RSpec.describe OmniFormBuilder do
       it 'when there are no errors' do
         subject.text_area(:field)
 
-        expect(template).to have_received(:content_tag).
-          with(:div, class: 'col-sm-10')
+        expect(template).to have_received(:content_tag)
+          .with(:div, class: 'col-sm-10')
       end
 
       it 'when there is an error on the field' do
         allow(model).to receive(:errors) do
-          { field: [ 'error message' ] }
+          { field: ['error message'] }
         end
 
         subject.text_area(:field)
 
-        expect(template).to have_received(:content_tag).
-          with(:div, class: 'col-sm-10 has-error')
+        expect(template).to have_received(:content_tag)
+          .with(:div, class: 'col-sm-10 has-error')
       end
     end
 
@@ -167,7 +167,7 @@ RSpec.describe OmniFormBuilder do
   describe 'generating a check box' do
     before(:each) do
       allow(template).to receive(:check_box).and_return('<input>')
-      allow(template).to receive(:label) do |name, field, label, options|
+      allow(template).to receive(:label) do |_name, _field, label, _options|
         "<label>#{label}</label>"
       end
     end
@@ -175,8 +175,8 @@ RSpec.describe OmniFormBuilder do
     it 'generates the correct surrounding div' do
       subject.check_box(:field)
 
-      expect(template).to have_received(:content_tag).
-        with(:div, class: 'form-group')
+      expect(template).to have_received(:content_tag)
+        .with(:div, class: 'form-group')
     end
 
     it 'generates the correct label' do
@@ -194,19 +194,19 @@ RSpec.describe OmniFormBuilder do
       it 'when there are no errors' do
         subject.check_box(:field)
 
-        expect(template).to have_received(:content_tag).
-          with(:div, class: 'col-sm-10 col-sm-offset-2')
+        expect(template).to have_received(:content_tag)
+          .with(:div, class: 'col-sm-10 col-sm-offset-2')
       end
 
       it 'when there is an error on the field' do
         allow(model).to receive(:errors) do
-          { field: [ 'error message' ] }
+          { field: ['error message'] }
         end
 
         subject.check_box(:field)
 
-        expect(template).to have_received(:content_tag).
-          with(:div, class: 'col-sm-10 col-sm-offset-2 has-error')
+        expect(template).to have_received(:content_tag)
+          .with(:div, class: 'col-sm-10 col-sm-offset-2 has-error')
       end
     end
 
@@ -239,15 +239,15 @@ RSpec.describe OmniFormBuilder do
     it 'generates the correct surrounding div' do
       subject.submit
 
-      expect(template).to have_received(:content_tag).
-        with(:div, class: 'form-group')
+      expect(template).to have_received(:content_tag)
+        .with(:div, class: 'form-group')
     end
 
     it 'generates the correct div around the control' do
       subject.submit
 
-      expect(template).to have_received(:content_tag).
-        with(:div, class: 'col-sm-10 col-sm-offset-2')
+      expect(template).to have_received(:content_tag)
+        .with(:div, class: 'col-sm-10 col-sm-offset-2')
     end
 
     describe 'when the model has not been persisted' do

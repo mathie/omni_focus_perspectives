@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe PerspectivesController do
   describe 'GET :index' do
-    let(:perspectives) { [ double('Perspective') ] }
+    let(:perspectives) { [double('Perspective')] }
 
     before(:each) do
       allow(Perspective).to receive(:all) { perspectives }

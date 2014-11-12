@@ -1,3 +1,4 @@
+# CRUD actions to drive the web view for managing basic perspectives.
 class PerspectivesController < ApplicationController
   before_filter :find_perspective
 
@@ -38,6 +39,7 @@ class PerspectivesController < ApplicationController
   end
 
   private
+
   def perspective_params
     params.require(:perspective).permit(:title, :description, :sidebar)
   end
