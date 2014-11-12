@@ -4,3 +4,14 @@
 require File.expand_path('../config/application', __FILE__)
 
 Rails.application.load_tasks
+
+# Replace the default documentation generation with YARD goodness. Sadly this
+# must be done after the initial documentation tasks are registered so we can
+# clear them.
+if defined?(YARD)
+  Rake::Task['doc:app'].clear
+
+  namespace :doc do
+    YARD::Rake::YardocTask.new :app
+  end
+end
