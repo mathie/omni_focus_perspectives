@@ -1,11 +1,13 @@
 require 'rails_helper'
 
 RSpec.describe PerspectivesController do
+  let(:perspective_class) { class_spy('Perspective').as_stubbed_const }
+
   describe 'GET :index' do
-    let(:perspectives) { [double('Perspective')] }
+    let(:perspectives) { [instance_spy('Perspective')] }
 
     before(:each) do
-      allow(Perspective).to receive(:all) { perspectives }
+      allow(perspective_class).to receive(:all) { perspectives }
     end
 
     def do_get
@@ -27,7 +29,7 @@ RSpec.describe PerspectivesController do
     it 'retrieves a list of perspectives to display' do
       do_get
 
-      expect(Perspective).to have_received(:all)
+      expect(perspective_class).to have_received(:all)
     end
 
     it 'assigns @perspectives to the view' do
@@ -38,10 +40,10 @@ RSpec.describe PerspectivesController do
   end
 
   describe 'GET :show' do
-    let(:perspective) { double('Perspective') }
+    let(:perspective) { instance_spy('Perspective') }
 
     before(:each) do
-      allow(Perspective).to receive(:find) { perspective }
+      allow(perspective_class).to receive(:find) { perspective }
     end
 
     def do_get
@@ -63,7 +65,7 @@ RSpec.describe PerspectivesController do
     it 'finds the perspective' do
       do_get
 
-      expect(Perspective).to have_received(:find).with('today')
+      expect(perspective_class).to have_received(:find).with('today')
     end
 
     it 'assigns @perspective to the view' do
@@ -74,10 +76,10 @@ RSpec.describe PerspectivesController do
   end
 
   describe 'GET :new' do
-    let(:perspective) { double('Perspective') }
+    let(:perspective) { instance_spy('Perspective') }
 
     before(:each) do
-      allow(Perspective).to receive(:new) { perspective }
+      allow(perspective_class).to receive(:new) { perspective }
     end
 
     def do_get
@@ -99,7 +101,7 @@ RSpec.describe PerspectivesController do
     it 'builds a new perspective' do
       do_get
 
-      expect(Perspective).to have_received(:new)
+      expect(perspective_class).to have_received(:new)
     end
 
     it 'assigns @perspective to the view' do
@@ -110,7 +112,7 @@ RSpec.describe PerspectivesController do
   end
 
   describe 'POST :create' do
-    let(:perspective) { instance_spy Perspective, save: true }
+    let(:perspective) { instance_spy 'Perspective', save: true }
     let(:perspective_params) { { title: 'Today', description: 'My today perspective', sidebar: '0' } }
     let(:params)             { { perspective: perspective_params } }
 
@@ -119,13 +121,13 @@ RSpec.describe PerspectivesController do
     end
 
     before(:each) do
-      allow(Perspective).to receive(:new).and_return(perspective)
+      allow(perspective_class).to receive(:new).and_return(perspective)
     end
 
     it 'builds a new perspective with the supplied parameters' do
       do_post
 
-      expect(Perspective).to have_received(:new).with(perspective_params)
+      expect(perspective_class).to have_received(:new).with(perspective_params)
     end
 
     it 'attempts to save the new perspective' do
@@ -174,10 +176,10 @@ RSpec.describe PerspectivesController do
   end
 
   describe 'GET :edit' do
-    let(:perspective) { double('Perspective') }
+    let(:perspective) { instance_spy('Perspective') }
 
     before(:each) do
-      allow(Perspective).to receive(:find) { perspective }
+      allow(perspective_class).to receive(:find) { perspective }
     end
 
     def do_get
@@ -199,7 +201,7 @@ RSpec.describe PerspectivesController do
     it 'finds the perspective' do
       do_get
 
-      expect(Perspective).to have_received(:find).with('today')
+      expect(perspective_class).to have_received(:find).with('today')
     end
 
     it 'assigns @perspective to the view' do
@@ -219,13 +221,13 @@ RSpec.describe PerspectivesController do
     end
 
     before(:each) do
-      allow(Perspective).to receive(:find).and_return(perspective)
+      allow(perspective_class).to receive(:find).and_return(perspective)
     end
 
     it 'finds the perspective' do
       do_put
 
-      expect(Perspective).to have_received(:find).with('today')
+      expect(perspective_class).to have_received(:find).with('today')
     end
 
     it 'attempts to update the perspective attributes' do
@@ -282,13 +284,13 @@ RSpec.describe PerspectivesController do
     end
 
     before(:each) do
-      allow(Perspective).to receive(:find).and_return(perspective)
+      allow(perspective_class).to receive(:find).and_return(perspective)
     end
 
     it 'finds the appropriate perspective' do
       do_delete
 
-      expect(Perspective).to have_received(:find).with('today')
+      expect(perspective_class).to have_received(:find).with('today')
     end
 
     it 'deletes the perspective' do
