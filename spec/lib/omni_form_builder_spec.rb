@@ -281,7 +281,7 @@ RSpec.describe OmniFormBuilder do
         'model',
         :field,
         :value,
-        { object: model }
+        object: model
       )
     end
 
