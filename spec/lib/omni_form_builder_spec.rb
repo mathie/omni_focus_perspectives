@@ -228,6 +228,71 @@ RSpec.describe OmniFormBuilder do
     end
   end
 
+  describe 'generating a radio button' do
+    before(:each) do
+      allow(template).to receive(:radio_button).and_return('<input>')
+      allow(template).to receive(:label) do |_name, _field, label, _options|
+        "<label>#{label}</label>"
+      end
+    end
+
+    it 'generates the correct surrounding div' do
+      subject.radio_button(:field, :value)
+
+      expect(template).to have_received(:content_tag)
+        .with(:div, class: 'form-group')
+    end
+
+    it 'generates the correct label' do
+      subject.radio_button(:field, :value)
+
+      expect(template).to have_received(:label).with(
+        'model',
+        :field,
+        '<input> Value',
+        object: model
+      )
+    end
+
+    describe 'generating the correct div around the input' do
+      it 'when there are no errors' do
+        subject.radio_button(:field, :value)
+
+        expect(template).to have_received(:content_tag)
+          .with(:div, class: 'col-sm-10 col-sm-offset-2')
+      end
+
+      it 'when there is an error on the field' do
+        allow(model).to receive(:errors) do
+          { field: ['error message'] }
+        end
+
+        subject.radio_button(:field, :value)
+
+        expect(template).to have_received(:content_tag)
+          .with(:div, class: 'col-sm-10 col-sm-offset-2 has-error')
+      end
+    end
+
+    it 'generates the correct input' do
+      subject.radio_button(:field, :value)
+
+      expect(template).to have_received(:radio_button).with(
+        'model',
+        :field,
+        :value,
+        { object: model }
+      )
+    end
+
+    it 'spits out all the generated fields, nested correctly' do
+      expected = '<div><div><div><label><input> Value</label></div></div></div>'
+      result = subject.radio_button(:field, :value)
+
+      expect(result).to eq(expected)
+    end
+  end
+
   describe 'generating a submit button' do
     before(:each) do
       allow(template).to receive(:submit_tag) { '<input>' }

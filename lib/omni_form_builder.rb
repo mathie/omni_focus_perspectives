@@ -26,11 +26,26 @@ class OmniFormBuilder < ActionView::Helpers::FormBuilder
   end
 
   def check_box(method, options = {}, &block)
+    label_text = options.delete(:label) || method.to_s.humanize
+
     form_group do
       control_div(method: method, offset: true) do
         @template.content_tag(:div, class: 'checkbox') do
           field = super method, options
-          label(method, field.html_safe + ' ' + method.to_s.humanize)
+          label(method, field.html_safe + ' ' + label_text)
+        end + help_text(&block)
+      end
+    end
+  end
+
+  def radio_button(method, tag_value, options = {}, &block)
+    label_text = options.delete(:label) || tag_value.to_s.humanize
+
+    form_group do
+      control_div(method: method, offset: true) do
+        @template.content_tag(:div, class: 'radio') do
+          field = super method, tag_value, options
+          label(method, field.html_safe + ' ' + label_text)
         end + help_text(&block)
       end
     end
