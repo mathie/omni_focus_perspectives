@@ -6,7 +6,7 @@
     intended to do. This could be, but doesn't have to be, the title you've
     given the perspective in OmniFocus.
   <% end %>
-  
+
   <%= f.text_area :description, rows: 6 do %>
     Describe your perspective. Be sure to give some detail on what you use the
     perspective for &ndash; is it primarily for planning, doing, reviewing, or
@@ -16,6 +16,14 @@
 
   <%= f.check_box :sidebar do %>
     Do you show this view in your sidebar, or is it just for occasional use?
+  <% end %>
+
+  <%= f.radio_button :perspective_type, :project, label: 'Use the project hierarchy' do %>
+    The sidebar shows contexts. Grouping and sorting apply to actions.
+  <% end %>
+
+  <%= f.radio_button :perspective_type, :context, label: 'Don\'t use the project hierarchy' do %>
+    The sidebar shows folders and projects. Grouping and sorting apply to projects.
   <% end %>
 
   <%= f.submit %>
