@@ -4,7 +4,8 @@ Rails.application.routes.draw do
     :contexts,
     :flagged,
     :review,
-    :custom_projects
+    :custom_projects,
+    :custom_contexts
   ].each do |perspective|
     resources "#{perspective}_perspectives", only: [
       :show, :new, :create,

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150103173513) do
+ActiveRecord::Schema.define(version: 20150104133942) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -35,6 +35,8 @@ ActiveRecord::Schema.define(version: 20150103173513) do
     t.integer  "filter_by_duration"
     t.integer  "filter_projects"
     t.string   "find_text"
+    t.integer  "group_items_by"
+    t.integer  "filter_contexts"
   end
 
 end
