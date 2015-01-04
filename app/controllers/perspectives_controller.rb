@@ -56,6 +56,10 @@ class PerspectivesController < ApplicationController
   end
 
   def perspective_fields
-    [ :name, :description, :shown_in_sidebar ]
+    [
+      :name, :description, :shown_in_sidebar,
+      :modifier_shift, :modifier_ctrl, :modifier_alt, :modifier_cmd,
+      :shortcut
+    ]
   end
 end

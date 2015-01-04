@@ -5,6 +5,12 @@
   <%= f.text_area :description %>
   <%= f.check_box :shown_in_sidebar %>
 
+  <%= f.check_box :modifier_shift %>
+  <%= f.check_box :modifier_ctrl %>
+  <%= f.check_box :modifier_alt %>
+  <%= f.check_box :modifier_cmd %>
+  <%= f.text_field :shortcut %>
+
   <%= yield f %>
 
   <%= f.submit %>

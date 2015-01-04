@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150104133942) do
+ActiveRecord::Schema.define(version: 20150104165418) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -37,6 +37,11 @@ ActiveRecord::Schema.define(version: 20150104133942) do
     t.string   "find_text"
     t.integer  "group_items_by"
     t.integer  "filter_contexts"
+    t.boolean  "modifier_shift",          default: false, null: false
+    t.boolean  "modifier_ctrl",           default: false, null: false
+    t.boolean  "modifier_alt",            default: false, null: false
+    t.boolean  "modifier_cmd",            default: false, null: false
+    t.string   "shortcut"
   end
 
 end

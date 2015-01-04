@@ -10,6 +10,17 @@
 <h2>Details</h2>
 
 <dl>
+  <% if perspective.shortcut.present? %>
+    <dt>Shortcut</dt>
+    <dd>
+      <% if perspective.modifier_shift? %>shift<% end %>
+      <% if perspective.modifier_ctrl? %>ctrl<% end %>
+      <% if perspective.modifier_alt? %>alt<% end %>
+      <% if perspective.modifier_cmd? %>cmd<% end %>
+      -<%= perspective.shortcut %>
+    </dd>
+  <% end %>
+
   <dt>Shown in sidebar?</dt>
   <dd><%= perspective.shown_in_sidebar? ? "Yes" : "No" %></dd>
 
