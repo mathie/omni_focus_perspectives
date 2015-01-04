@@ -4,4 +4,8 @@
   <%= link_to 'New perspective', choose_new_perspective_path, class: 'btn btn-primary' %>
 <% end %>
 
+<%= paginate @perspectives %>
+
 <%= render @perspectives %>
+
+<%= paginate @perspectives %>

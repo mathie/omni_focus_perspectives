@@ -1,6 +1,6 @@
 class PerspectivesController < ApplicationController
   def index
-    @perspectives = Perspective.all
+    @perspectives = Perspective.order(:id).page(params[:page])
   end
 
   def show
