@@ -7,10 +7,7 @@ Rails.application.routes.draw do
     :custom_projects,
     :custom_contexts
   ].each do |perspective|
-    resources "#{perspective}_perspectives", only: [
-      :show, :new, :create,
-      :edit, :update, :destroy
-    ]
+    resources "#{perspective}_perspectives"
   end
 
   resources :perspectives, only: [ :index ] do
