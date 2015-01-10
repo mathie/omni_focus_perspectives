@@ -27,16 +27,8 @@
 
         <div class="collapse navbar-collapse" id="primary-navbar-collapse">
           <ul class="nav navbar-nav">
-            <% if request.path == root_path %>
-              <li class="active"><%= link_to 'Home', root_path %></li>
-            <% else %>
-              <li><%= link_to 'Home', root_path %></li>
-            <% end %>
-            <% if request.path == perspectives_path %>
-              <li class="active"><%= link_to 'Perspectives', perspectives_path %></li>
-            <% else %>
-              <li><%= link_to 'Perspectives', perspectives_path %></li>
-            <% end %>
+            <%= li_link_to_active 'Home', root_path %>
+            <%= li_link_to_active 'Perspectives', perspectives_path %>
           </ul>
         </div>
       </div>
