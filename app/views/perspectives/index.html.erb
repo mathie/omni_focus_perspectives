@@ -10,8 +10,12 @@
   <%= li_link_to_active 'Custom (Context-based)', custom_contexts_perspectives_path %>
 </ul>
 
-<%= paginate @perspectives %>
+<div class="tab-content">
+  <div role="tabpanel" class="tab-pane active">
+    <%= paginate @perspectives %>
 
-<%= render @perspectives %>
+    <%= render @perspectives %>
 
-<%= paginate @perspectives %>
+    <%= paginate @perspectives %>
+  </div>
+</div>
