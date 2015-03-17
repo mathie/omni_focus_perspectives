@@ -1,0 +1,8 @@
+<%= div_for custom_projects_perspective do %>
+  <h2>
+    <%= link_to custom_projects_perspective.name, custom_projects_perspective %>
+    <small>Custom (Project)</small>
+  </h2>
+
+  <%= simple_format custom_projects_perspective.description %>
+<% end %>

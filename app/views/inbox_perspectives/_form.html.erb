@@ -1,0 +1,3 @@
+<%= render layout: 'perspectives/form', locals: { perspective: perspective } do |f| %>
+  <%= f.select :show_items, InboxPerspective.show_items.map { |k, v| [k.humanize, k] } %>
+<% end %>

@@ -99,6 +99,9 @@ GEM
       railties (>= 4.2.0)
       thor (>= 0.14, < 2.0)
     json (1.8.1)
+    kaminari (0.16.1)
+      actionpack (>= 3.0.0)
+      activesupport (>= 3.0.0)
     kgio (2.9.2)
     listen (2.8.4)
       celluloid (>= 0.15.2)
@@ -229,6 +232,7 @@ DEPENDENCIES
   guard-bundler
   guard-rspec
   jquery-rails
+  kaminari
   pg
   rails (~> 4.2.0)
   rspec-rails

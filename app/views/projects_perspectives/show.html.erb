@@ -1,0 +1,7 @@
+<%= render layout: 'perspectives/show', locals: { perspective: @perspective } do |perspective| %>
+  <dt>Show Items</dt>
+  <dd><%= perspective.show_items.humanize %></dd>
+
+  <dt>Show folders in outline</dt>
+  <dd><%= perspective.show_folders_in_outline? ? "Yes" : "No" %></dd>
+<% end %>

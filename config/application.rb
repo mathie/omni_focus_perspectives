@@ -39,3 +39,5 @@ module Perspectives
     config.assets.precompile << %r{.*.(?:eot|svg|ttf|woff)$}
   end
 end
+
+require 'bootstrap_form_builder'

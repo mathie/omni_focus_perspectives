@@ -1,0 +1,9 @@
+<%= render layout: 'perspectives/form', locals: { perspective: perspective } do |f| %>
+  <%= f.check_box :open_in_a_new_window %>
+
+  <% [ :group_projects_by, :sort_projects_by, :filter_by_status, :filter_by_availability, :filter_by_duration, :filter_projects ].each do |field| %>
+    <%= f.select field, perspective.class.send(field.to_s.pluralize).map { |k, v| [ k.humanize, k ] } %>
+  <% end %>
+
+  <%= f.text_field :find_text %>
+<% end %>

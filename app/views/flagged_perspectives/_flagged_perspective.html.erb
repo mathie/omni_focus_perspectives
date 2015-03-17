@@ -1,0 +1,8 @@
+<%= div_for flagged_perspective do %>
+  <h2>
+    <%= link_to flagged_perspective.name, flagged_perspective %>
+    <small>Flagged</small>
+  </h2>
+
+  <%= simple_format flagged_perspective.description %>
+<% end %>

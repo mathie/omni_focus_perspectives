@@ -1,0 +1,10 @@
+<%= render layout: 'perspectives/show', locals: { perspective: @perspective } do |perspective| %>
+  <dt>Show Projects</dt>
+  <dd><%= perspective.show_projects.humanize %></dd>
+
+  <dt>Show Items</dt>
+  <dd><%= perspective.show_items.humanize %></dd>
+
+  <dt>Sort Projects By</dt>
+  <dd><%= perspective.sort_projects_by.humanize %></dd>
+<% end %>

@@ -11,9 +11,37 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 0) do
+ActiveRecord::Schema.define(version: 20150104165418) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "perspectives", force: :cascade do |t|
+    t.string   "name",                                    null: false
+    t.text     "description",                             null: false
+    t.datetime "created_at",                              null: false
+    t.datetime "updated_at",                              null: false
+    t.string   "type",                                    null: false
+    t.integer  "show_items",              default: 1
+    t.boolean  "show_folders_in_outline", default: false, null: false
+    t.integer  "sort_items_by"
+    t.boolean  "shown_in_sidebar",        default: false, null: false
+    t.integer  "show_projects"
+    t.integer  "sort_projects_by"
+    t.integer  "group_projects_by"
+    t.boolean  "open_in_a_new_window",    default: false, null: false
+    t.integer  "filter_by_status"
+    t.integer  "filter_by_availability"
+    t.integer  "filter_by_duration"
+    t.integer  "filter_projects"
+    t.string   "find_text"
+    t.integer  "group_items_by"
+    t.integer  "filter_contexts"
+    t.boolean  "modifier_shift",          default: false, null: false
+    t.boolean  "modifier_ctrl",           default: false, null: false
+    t.boolean  "modifier_alt",            default: false, null: false
+    t.boolean  "modifier_cmd",            default: false, null: false
+    t.string   "shortcut"
+  end
 
 end
