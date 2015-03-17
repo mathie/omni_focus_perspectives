@@ -1,0 +1,8 @@
+<%= div_for projects_perspective do %>
+  <h2>
+    <%= link_to projects_perspective.name, projects_perspective %>
+    <small>Projects</small>
+  </h2>
+
+  <%= simple_format projects_perspective.description %>
+<% end %>

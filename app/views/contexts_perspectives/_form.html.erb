@@ -1,0 +1,4 @@
+<%= render layout: 'perspectives/form', locals: { perspective: perspective } do |f| %>
+  <%= f.select :show_items, perspective.class.show_items.map { |k, v| [k.humanize, k] } %>
+  <%= f.select :sort_items_by, perspective.class.sort_items_bies.map { |k, v| [k.humanize, k] } %>
+<% end %>

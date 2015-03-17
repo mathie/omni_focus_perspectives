@@ -1,0 +1,8 @@
+<%= div_for review_perspective do %>
+  <h2>
+    <%= link_to review_perspective.name, review_perspective %>
+    <small>Review</small>
+  </h2>
+
+  <%= simple_format review_perspective.description %>
+<% end %>

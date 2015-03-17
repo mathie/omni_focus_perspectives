@@ -1,0 +1,4 @@
+<%= render layout: 'perspectives/form', locals: { perspective: perspective } do |f| %>
+  <%= f.select :show_items, ProjectsPerspective.show_items.map { |k, v| [k.humanize, k] } %>
+  <%= f.check_box :show_folders_in_outline %>
+<% end %>

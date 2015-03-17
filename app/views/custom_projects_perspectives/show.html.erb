@@ -1,0 +1,25 @@
+<%= render layout: 'perspectives/show', locals: { perspective: @perspective } do |perspective| %>
+  <dt>Open in a New Window</dt>
+  <dd><%= perspective.open_in_a_new_window ? "Yes" : "No" %></dd>
+
+  <dt>Group Projects By</dt>
+  <dd><%= perspective.group_projects_by.humanize %></dd>
+
+  <dt>Sort Projects By</dt>
+  <dd><%= perspective.sort_projects_by.humanize %></dd>
+
+  <dt>Filter By Status</dt>
+  <dd><%= perspective.filter_by_status.humanize %></dd>
+
+  <dt>Filter By Availability</dt>
+  <dd><%= perspective.filter_by_availability.humanize %></dd>
+
+  <dt>Filter By Duration</dt>
+  <dd><%= perspective.filter_by_duration.humanize %></dd>
+
+  <dt>Filter Projects</dt>
+  <dd><%= perspective.filter_projects.humanize %></dd>
+
+  <dt>Find Text</dt>
+  <dd><%= perspective.find_text %></dd>
+<% end %>
