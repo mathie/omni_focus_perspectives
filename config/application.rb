@@ -30,6 +30,13 @@ module Perspectives
 
     # Do not swallow errors in after_commit/after_rollback callbacks.
     config.active_record.raise_in_transactional_callbacks = true
+
+    # Add bower's installation location to the asset path.
+    config.assets.paths << Rails.root.join('vendor', 'assets', 'bower_components')
+    [ 'fonts', 'stylesheets', 'javascripts' ].each do |asset|
+      config.assets.paths << Rails.root.join('vendor', 'assets', 'bower_components', 'bootstrap-sass-official', 'assets', asset)
+    end
+    config.assets.precompile << %r{.*.(?:eot|svg|ttf|woff)$}
   end
 end
 
